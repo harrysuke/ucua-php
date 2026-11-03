@@ -1,0 +1,76 @@
+<script>
+function myOnLoad() {
+    try{
+        var userid = document.getElementById("userid").value;
+        var msg = '';
+        console.log(userid);
+        switch (parseInt(userid)){
+            case 1://public user
+                document.getElementById('location').disabled = false;
+                document.getElementById('conditionDetails').disabled = false;
+                document.getElementById('actionTaken').disabled = false;
+                document.getElementById('observerName').disabled = false;
+                document.getElementById('observerDepartment').disabled = false;
+                document.getElementById('observerEmail').disabled = false;
+                document.getElementById('observerConditionDetails').disabled = false;
+
+                document.getElementById('HSEreviewName').disabled = true;
+                document.getElementById('PICreviewName').disabled = true;
+                document.getElementById('HOSreviewName').disabled = true;
+                document.getElementById('HODreviewName').disabled = true;
+                document.getElementById('btnNotify').disabled = true;
+                break;
+            case 2://public selected user
+                msg = 'required';
+                break;
+            case 3://PSSD Admin
+                msg = 'disabled';
+                break;
+            case 4://PSSD HSE Officer
+                msg = 'disabled';
+                break;
+            case 5://PSSD Personnel
+                msg = 'disabled';
+                break;
+            case 6://PSSD HOS
+                msg = 'disabled';
+                break;
+            case 7://PSSD HOD
+                msg = 'disabled';
+                break;
+            case 8://HSE Reps
+                document.getElementById('location').disabled = true;
+                document.getElementById('conditionDetails').disabled = true;
+                document.getElementById('actionTaken').disabled = true;
+                document.getElementById('observerName').disabled = true;
+                document.getElementById('observerDepartment').disabled = true;
+                document.getElementById('observerEmail').disabled = true;
+                document.getElementById('observerConditionDetails').disabled = true;
+
+                document.getElementById('HSEreviewName').disabled = false;
+                document.getElementById('PICreviewName').disabled = false;
+                document.getElementById('HOSreviewName').disabled = false;
+                document.getElementById('HODreviewName').disabled = false;
+                document.getElementById('btnNotify').disabled = false;
+                break;
+            case 9://ICT Admin
+                msg = 'required';
+                break;
+            case 10://HSE PCU
+                msg = 'disabled';
+                break;
+            case 11://Tester
+                msg = 'required';
+                break;
+            default:
+                msg = 'disabled';
+                break;
+        }
+        console.log(msg);
+    }catch(err){
+        console.error(err.message);
+    }
+}
+
+window.onload = myOnLoad;
+</script>

@@ -1,0 +1,101 @@
+table {
+        align: left;
+    }
+
+    td {
+        padding: 8px;
+    }
+
+    .uitable {
+        margin-top: -20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .uitable td {
+        border: 1px solid #CCCCCC;
+    }
+
+    .form {
+        font-weight: bold;
+    }
+
+    img.evidence {
+        width: 100px;
+        height: 100px;
+        background: url(http://goo.gl/vyAs27) no-repeat scroll 0 0;
+    }
+
+    .blank {
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 1px solid #000000;
+        width: 100px;
+    }
+
+    .noborder td {
+        border: 0;
+        padding: 0;
+        margin: 0;
+    }
+
+    h5,
+    h6 {
+        color: darkblue;
+        font-weight: bold;
+    }
+
+    #overlay {
+        position: absolute;
+        /* Sit on top of the page content */
+        display: none;
+        /* Hidden by default */
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Black background with opacity */
+        opacity: .6;
+        z-index: 2;
+        /* Specify a stack order in case you're using a different order for other elements */
+        cursor: pointer;
+        /* Add a pointer on hover */
+    }
+
+    #overlay:before {
+        display: none;
+        /* Hidden by default */
+        width: 100%;
+        /* Full width (cover the whole page) */
+        height: 100%;
+        /* Full height (cover the whole page) */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Black background with opacity */
+        opacity: .6;
+        z-index: 2;
+        /* Specify a stack order in case you're using a different order for other elements */
+        cursor: pointer;
+        /* Add a pointer on hover */
+    }
+
+    #overlay:after {
+        display: none;
+        /* Hidden by default */
+        width: 100%;
+        /* Full width (cover the whole page) */
+        height: 100%;
+        /* Full height (cover the whole page) */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Black background with opacity */
+        opacity: .6;
+        z-index: 2;
+        /* Specify a stack order in case you're using a different order for other elements */
+        cursor: pointer;
+        /* Add a pointer on hover */
+    }

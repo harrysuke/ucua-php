@@ -1,0 +1,6 @@
+Brand Management
+Manage branding system settings
+
+Brand name:?
+Brand logo:?
+Brand color:?

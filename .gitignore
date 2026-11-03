@@ -1,0 +1,16 @@
+# To ignore a folder and all its contents
+uploads/
+docs/
+SQL/
+api/
+img/
+apk/
+video/
+csv/
+tcpdf/
+trumbowyg/
+fonts/
+download/
+
+# Secrets / local credentials — never commit real API keys
+ai/apikey.txt

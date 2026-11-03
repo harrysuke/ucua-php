@@ -1,0 +1,10 @@
+General
+Organization profile
+Customize how your organization appears across the site.
+
+org logo:?
+org name:?
+org address:?
+
+Company account settings
+User account settings

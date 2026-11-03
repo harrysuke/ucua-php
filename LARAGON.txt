@@ -1,0 +1,5 @@
+Laragon Troubleshooting
+
+
+Error: Field 'sql' doesn't have a default value
+Solution: SET GLOBAL sql_mode='';

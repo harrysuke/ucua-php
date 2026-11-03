@@ -1,0 +1,9 @@
+Onboarding
+
+Here you can reset the Basaas onboarding tips so that you can go through the initial product tour again. [Reset]
+
+
+Beta Features
+
+Enable the new UCUX
+The new UCUX has been revised from scratch and aims to increase productivity.

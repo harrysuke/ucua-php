@@ -1,0 +1,7 @@
+Gamification settings
+
+<pre>
+                            Signup 0 points
+                            Form Submission 0 points
+                            Daily login 0 points
+                        </pre>

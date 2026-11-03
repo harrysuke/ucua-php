@@ -1,0 +1,43 @@
+CREATE PROCEDURE sp_generate_report(IN start_date DATE, IN end_date DATE)
+BEGIN
+  SELECT 
+    product_name, 
+    SUM(quantity) AS total_sales, 
+    SUM(total_amount) AS total_revenue
+  FROM 
+    sales
+  WHERE 
+    sale_date BETWEEN start_date AND end_date
+  GROUP BY 
+    product_name;
+END;
+
+
+<?php
+// Connect to the database
+$conn = new mysqli("localhost", "username", "password", "database");
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Call the stored procedure
+$stmt = $conn->prepare("CALL sp_generate_report(?, ?)");
+$stmt->bind_param("ss", $start_date, $end_date);
+$start_date = '2022-01-01';
+$end_date = '2022-01-31';
+$stmt->execute();
+
+// Fetch the report data
+$result = $stmt->get_result();
+
+// Process the report data
+while ($row = $result->fetch_assoc()) {
+    echo $row['product_name'] . ": " . $row['total_sales'] . " units, $" . $row['total_revenue'] . "<br>";
+}
+
+// Close the statement and connection
+$stmt->close();
+$conn->close();
+?>

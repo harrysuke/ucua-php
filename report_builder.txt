@@ -1,0 +1,84 @@
+<?php
+$title = 'Report Builder';
+include('testFunctions.php');
+
+// Get all tables from the database
+$tables = array();
+$query = "SHOW TABLES";
+$result = $db->query($query);
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $tables[] = $row[$db_name];
+    }
+}
+
+// Get all columns for a chosen table
+function get_columns($table)
+{
+    global $db;
+    $columns = array();
+    $query = "SHOW COLUMNS FROM `$table`";
+    $result = $db->query($query);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $columns[] = $row['Field'];
+        }
+    }
+    return $columns;
+}
+
+// Save the report as a template
+function save_report($table, $columns)
+{
+    global $db;
+    $template_name = 'report_' . $table . '_' . implode('_', $columns) . '.php';
+    $template = '<?php
+    <table border="1">
+    <tr>
+    ';
+    foreach ($columns as $column) {
+        $template .= '<th>' . $column . '</th>';
+    }
+    $template .= '</tr>';
+    $query = "SELECT * FROM `$table`";
+    $result = $db->query($query);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $template .= '<tr>';
+            foreach ($columns as $column) {
+                $template .= '<td>' . $row[$column] . '</td>';
+            }
+            $template .= '</tr>';
+        }
+    }
+    $template .= '</table>';
+    file_put_contents($template_name, $template);
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $table = $_POST['table'];
+    $columns = array();
+    foreach ($_POST['columns'] as $column) {
+        if ($column != 'id') {
+            $columns[] = $column;
+        }
+    }
+    save_report($table, $columns);
+    echo 'Report saved as ' . $table . '_' . implode('_', $columns) . '.php';
+}
+?>
+
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <select name="table">
+        <?php foreach ($tables as $table) { ?>
+            <option value="<?php echo $table; ?>"><?php echo $table; ?></option>
+        <?php } ?>
+    </select>
+    <br />
+    <input type="checkbox" name="columns[]" value="id" /> id
+    <?php foreach (get_columns($tables[0]) as $column) { ?>
+        <input type="checkbox" name="columns[]" value="<?php echo $column; ?>" /> <?php echo $column; ?>
+    <?php } ?>
+    <br />
+    <input type="submit" value="Generate Report" />
+</form>

@@ -1,0 +1,49 @@
+$('#btnSave').click(function(){
+    var staffid = document.getElementById('staffId').value;
+    var fullurl = document.getElementById('staffId').value;
+    var id = document.getElementById('id').value;
+    var location = document.getElementById('location').value;
+    var conditionDetails = document.getElementById('conditionDetails').value;
+    var actionTaken = document.getElementsByName('actionTaken');
+    var observerName = document.getElementById('observerName').value;
+    var observerDepartment = document.getElementById('observerDepartment').value;
+    var observerEmail = document.getElementById('observerEmail').value;
+    var observerConditionDetails = document.getElementById('observerConditionDetails').value;
+    var remark = document.getElementById('remark').value;
+    var files = document.getElementById('files').value;
+
+    if(remark == ''){
+        alert(`Remark cannot be empty.`);
+        document.getElementById('remark').focus();
+    }
+
+    if(files == ''){
+        alert(`File upload cannot be empty.`);
+    }
+
+    $.ajax({
+        type: 'post',
+        data: {
+            btnSave: 1,
+            staffid: staffid,
+            fullurl: fullurl,
+            id: id,
+            location: location,
+            conditionDetails: conditionDetails,
+            actionTaken: actionTaken,
+            observerName: observerName,
+            observerDepartment: observerDepartment,
+            observerEmail: observerEmail,
+            observerConditionDetails: observerConditionDetails,
+            remark: remark,
+        },
+        url: 'default.php?page=newuiuc_form2',
+        success: function(data){
+            alertify.success(`Notification has been sent.`);
+            console.log(data);
+        },
+		error: function(data){
+			console.error(data);
+		}
+    });
+});
