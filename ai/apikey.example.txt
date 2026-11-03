@@ -1,0 +1,8 @@
+# Groq API key template
+#
+# 1. Copy this file to `ai/apikey.txt`
+# 2. Replace the value below with your real Groq API key
+# 3. `ai/apikey.txt` is gitignored and MUST NEVER be committed
+#
+# The app sources this file (e.g. `source ai/apikey.txt`) to get GROQ_API_KEY.
+export GROQ_API_KEY=your_groq_api_key_here
